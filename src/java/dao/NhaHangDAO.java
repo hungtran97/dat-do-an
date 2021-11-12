@@ -10,82 +10,103 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.MonAn;
+import model.NhaHang;
 
 /**
  *
- * @author hungt
+ * @author tungl
  */
-public class MonAnDAO {
+public class NhaHangDAO {
 
-    public static ArrayList<MonAn> getAllMonAn(String nhaHangId) {
-        ArrayList<MonAn> listMonAn = new ArrayList<>();
+    public static ArrayList<NhaHang> getAllNhaHang() {
+        ArrayList<NhaHang> listNhaHang = new ArrayList<>();
         try {
-            String query = "SELECT * FROM tblMonAn WHERE tblNhaHangid = " + nhaHangId;
+            String query = "SELECT * FROM tblNhaHang";
             PreparedStatement st = con.prepareStatement(query);
             System.out.println(st);
             ResultSet rs = st.executeQuery(query);
             System.out.println(rs);
             while (rs.next()) {
-                MonAn monAn = new MonAn(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-                listMonAn.add(monAn);
+                NhaHang nhaHang = new NhaHang(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                listNhaHang.add(nhaHang);
             }
             // close connection
             con.close();
-            return listMonAn;
+            return listNhaHang;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static ArrayList<MonAn> getListMonAn(String nhaHangId, String name) {
-        ArrayList<MonAn> listMonAn = new ArrayList<>();
+    public static ArrayList<NhaHang> getListNhaHang(String name) {
+        ArrayList<NhaHang> listNhaHang = new ArrayList<>();
         try {
-            String query = "SELECT * FROM tblMonAn WHERE tblNhaHangid = " + nhaHangId + " AND tenMon LIKE %" + name + "%";
+            String query = "SELECT * FROM tblNhaHang WHERE tenNhaHang LIKE %" + name + "%";
             PreparedStatement st = con.prepareStatement(query);
             System.out.println(st);
             ResultSet rs = st.executeQuery(query);
             System.out.println(rs);
             while (rs.next()) {
-                MonAn monAn = new MonAn(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-                listMonAn.add(monAn);
+                NhaHang nhaHang = new NhaHang(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                listNhaHang.add(nhaHang);
             }
             // close connection
             con.close();
-            return listMonAn;
+            return listNhaHang;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static MonAn getMonAn(String monAnId) {
+    public static NhaHang getNhaHang(String nhaHangId) {
         try {
-            String query = "SELECT * FROM tblMonAn WHERE id = " + monAnId;
+            String query = "SELECT * FROM tblNhaHang WHERE id = " + nhaHangId;
             PreparedStatement st = con.prepareStatement(query);
             System.out.println(st);
             ResultSet rs = st.executeQuery(query);
             System.out.println(rs);
-            MonAn monAn = new MonAn(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            NhaHang nhaHang = new NhaHang(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
             // close connection
             con.close();
-            return monAn;
+            return nhaHang;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    public static boolean suaMonAn(MonAn monan, String nhaHangId) {
+    
+    public static boolean themNhaHang(NhaHang nh, String chuNhaHangId) {
+        boolean kq = false;
+        PreparedStatement st = null;
+        try {
+            String query = "INSERT INTO tblMonAn (tenNhaHang, diaChi, gioHoatDong, tblChuNhaHangid)"
+                    + "("
+                    + nh.getTenNhaHang() + ","
+                    + nh.getDiaChi() + ","
+                    + nh.getGioHoatDong() + ","
+                    + chuNhaHangId + ")";
+            st = con.prepareStatement(query);
+            st.executeQuery(query);
+            // close connection
+            con.close();
+            kq = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return kq;
+    }
+    
+     public static boolean suaNhaHang(NhaHang nh, String chuNhaHangId) {
         boolean kq = false;
         PreparedStatement st = null;
         try {
             String query = "UPDATE tblMonAn SET"
-                    + "tenMon=" + monan.getTenMon() + ","
-                    + "giaMon=" + monan.getGiaMon() + ","
-                    + "soLuongTonKho=" + monan.getSoLuongTonKho() + ","
-                    + "tblNhaHangid=" + nhaHangId + ")";
+                    + "tenNhaHang=" + nh.getTenNhaHang() + ","
+                    + "diaChi=" + nh.getDiaChi() + ","
+                    + "gioHoatDong=" + nh.getGioHoatDong() + ","
+                    + "tblChuNhaHangid=" + chuNhaHangId + ")";
             st = con.prepareStatement(query);
             st.executeQuery(query);
             // close connection
@@ -97,34 +118,18 @@ public class MonAnDAO {
         return kq;
     }
 
-    public static boolean themMonAn(MonAn monan, String nhaHangId) {
+    public static boolean xoaNhaHang(String nhaHangId) {
         boolean kq = false;
         PreparedStatement st = null;
         try {
-            String query = "INSERT INTO tblMonAn (tenMon, giaMon, getSoLuongTonKho, tblNhaHangid)"
-                    + "("
-                    + monan.getTenMon() + ","
-                    + monan.getGiaMon() + ","
-                    + monan.getSoLuongTonKho() + ","
-                    + nhaHangId + ")";
-            st = con.prepareStatement(query);
-            st.executeQuery(query);
-            // close connection
-            con.close();
-            kq = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return kq;
-    }
+            String query1 = "DELETE FROM tblMonAn WHERE tblNhaHangid = " + nhaHangId;
+            st = con.prepareStatement(query1);
+            st.executeQuery(query1);
 
-    public static boolean xoaMonAn(String monAnId) {
-        boolean kq = false;
-        try {
-            String query = "DELETE FROM tblMonAn WHERE id = " + monAnId;
-            PreparedStatement st = con.prepareStatement(query);
-            System.out.println(st);
-            st.executeQuery(query);
+            String query2 = "DELETE FROM tblNhaHang WHERE id = " + nhaHangId;
+            st = con.prepareStatement(query2);
+            st.executeQuery(query2);
+
             // close connection
             con.close();
             kq = true;

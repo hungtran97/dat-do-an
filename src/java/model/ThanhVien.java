@@ -10,34 +10,47 @@ package model;
  * @author hungt
  */
 public class ThanhVien {
-    private String username;
-    private String password;
+    private String id;
+    private String hoTen;
     private String email;
     private String sdt;
-    private String diachi;
+    private String vaiTro;
+    private String diaChi;
+    private boolean daKichHoat;
 
-    public ThanhVien(String username, String password, String email, String sdt, String diachi) {
-        this.username = username;
-        this.password = password;
+    
+    public ThanhVien() {}
+
+    public ThanhVien(String hoten, String vaiTro, String email, String sdt, String diaChi, boolean daKichHoat) {
+        this.hoTen = hoten;
+        this.vaiTro = vaiTro;
         this.email = email;
-        this.sdt = sdt;
-        this.diachi = diachi;
+        this.diaChi = diaChi;
+        this.daKichHoat = daKichHoat;
+    }
+    
+    public String getId() {
+        return id;
     }
 
-    public String getUsername() {
-        return username;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public String getPassword() {
-        return password;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 
     public String getEmail() {
@@ -56,12 +69,19 @@ public class ThanhVien {
         this.sdt = sdt;
     }
 
-    public String getDiachi() {
-        return diachi;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setDiachi(String diachi) {
-        this.diachi = diachi;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
     
+     public boolean getDaKichHoat(boolean daKichHoat) {
+        return daKichHoat;
+    }
+
+    public void setDaKichHoat(boolean daKichHoat) {
+        this.daKichHoat = daKichHoat;
+    }
 }
