@@ -5,64 +5,93 @@
  */
 package model;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  *
- * @author tungl
+ * @author Hung
  */
-public class NhaHang {
-    private String id;
-    private String tenNhaHang;
-    private String diaChi;
-    private String gioHoatDong;
-    private String tblChuNhaHangid;
-
-    public NhaHang(String tenNhaHang, String diaChi, String gioHoatDong, String tblChuNhaHangid) {
-        this.tenNhaHang = tenNhaHang;
-        this.diaChi = diaChi;
-        this.gioHoatDong = gioHoatDong;
-        this.tblChuNhaHangid = tblChuNhaHangid;
+public class NhaHang implements Serializable{
+    private int id;
+    private String tennhahang;
+    private String diachinhahang;
+    private String giohoatdong;
+    private List<MonAn> menu;
+    private List<LoiNhanXet> review;
+    private ChuNhaHang chunhahang;
+    
+    public NhaHang(){
+        super();
     }
 
-    public NhaHang() {
+    public NhaHang(int id, String tennhahang, String diachinhahang, String giohoatdong, List<MonAn> menu, List<LoiNhanXet> review, ChuNhaHang chunhahang) {
+        super();
+        this.id = id;
+        this.tennhahang = tennhahang;
+        this.diachinhahang = diachinhahang;
+        this.giohoatdong = giohoatdong;
+        this.menu = menu;
+        this.review = review;
+        this.chunhahang = chunhahang;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getTenNhaHang() {
-        return tenNhaHang;
+    public String getTennhahang() {
+        return tennhahang;
     }
 
-    public void setTenNhaHang(String tenNhaHang) {
-        this.tenNhaHang = tenNhaHang;
+    public void setTennhahang(String tennhahang) {
+        this.tennhahang = tennhahang;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getDiachinhahang() {
+        return diachinhahang;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDiachinhahang(String diachinhahang) {
+        this.diachinhahang = diachinhahang;
     }
 
-    public String getGioHoatDong() {
-        return gioHoatDong;
+    public String getGiohoatdong() {
+        return giohoatdong;
     }
 
-    public void setGioHoatDong(String gioHoatDong) {
-        this.gioHoatDong = gioHoatDong;
+    public void setGiohoatdong(String giohoatdong) {
+        this.giohoatdong = giohoatdong;
     }
 
-    public String getTblChuNhaHangid() {
-        return tblChuNhaHangid;
+    public List<MonAn> getMenu() {
+        return menu;
     }
 
-    public void setTblChuNhaHangid(String tblChuNhaHangid) {
-        this.tblChuNhaHangid = tblChuNhaHangid;
+    public void setMenu(List<MonAn> menu) {
+        this.menu = menu;
     }
+
+    public List<LoiNhanXet> getReview() {
+        return review;
+    }
+
+    public void setReview(List<LoiNhanXet> review) {
+        this.review = review;
+    }
+
+    public ChuNhaHang getChunhahang() {
+        return chunhahang;
+    }
+
+    public void setChunhahang(ChuNhaHang chunhahang) {
+        this.chunhahang = chunhahang;
+    }
+    
+    
+    
 }

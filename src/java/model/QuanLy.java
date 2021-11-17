@@ -5,10 +5,23 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author hungt
+ * @author Hung
  */
-public class QuanLy {
+public class QuanLy extends ThanhVien implements Serializable{
+    
+    public QuanLy(){
+        super();
+    }
+
+    public QuanLy(int id, String hoten, String email, String vaitro, boolean dakichhoat) {
+        super(id, hoten, email, vaitro, dakichhoat);
+    }
+    
+    
+    
     
 }

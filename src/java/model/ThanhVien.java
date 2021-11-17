@@ -5,52 +5,46 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author hungt
+ * @author Hung
  */
-public class ThanhVien {
-    private String id;
-    private String hoTen;
+public class ThanhVien implements Serializable{
+    private int id;
+    private String hoten;
     private String email;
-    private String sdt;
-    private String vaiTro;
-    private String diaChi;
-    private boolean daKichHoat;
-
+    private String vaitro;
+    private boolean dakichhoat;
     
-    public ThanhVien() {}
-
-    public ThanhVien(String hoten, String vaiTro, String email, String sdt, String diaChi, boolean daKichHoat) {
-        this.hoTen = hoten;
-        this.vaiTro = vaiTro;
-        this.email = email;
-        this.diaChi = diaChi;
-        this.daKichHoat = daKichHoat;
+    public ThanhVien(){
+        super();
     }
-    
-    public String getId() {
+
+    public ThanhVien(int id, String hoten, String email, String vaitro, boolean dakichhoat) {
+        super();
+        this.id = id;
+        this.hoten = hoten;
+        this.email = email;
+        this.vaitro = vaitro;
+        this.dakichhoat = dakichhoat;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getHoten() {
+        return hoten;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
-    }
-
-    public String getVaiTro() {
-        return vaiTro;
-    }
-
-    public void setVaiTro(String vaiTro) {
-        this.vaiTro = vaiTro;
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
     }
 
     public String getEmail() {
@@ -61,27 +55,22 @@ public class ThanhVien {
         this.email = email;
     }
 
-    public String getSdt() {
-        return sdt;
+    public String getVaitro() {
+        return vaitro;
     }
 
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
+    public void setVaitro(String vaitro) {
+        this.vaitro = vaitro;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public boolean isDakichhoat() {
+        return dakichhoat;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDakichhoat(boolean dakichhoat) {
+        this.dakichhoat = dakichhoat;
     }
     
-     public boolean getDaKichHoat(boolean daKichHoat) {
-        return daKichHoat;
-    }
-
-    public void setDaKichHoat(boolean daKichHoat) {
-        this.daKichHoat = daKichHoat;
-    }
+    
+    
 }
