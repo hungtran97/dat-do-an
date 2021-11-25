@@ -34,7 +34,7 @@ public class TKNhaHangDAO extends DAO{
                 if(kq == null) kq = new ArrayList<TKNhaHang>();
                 TKNhaHang tknh = new TKNhaHang();
                 tknh.setId(rs.getInt("id"));
-                tknh.setHoten(rs.getString("hoten"));
+                tknh.setTen(rs.getString("ten"));
                 tknh.setDiachi(rs.getString("diachi"));
                 tknh.setSdt(rs.getString("sodienthoai"));
                 tknh.setDoanhthu(rs.getFloat("doanhthu"));
