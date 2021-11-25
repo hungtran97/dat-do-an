@@ -9,20 +9,23 @@ import java.io.Serializable;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
-public class KhachHang extends ThanhVien implements Serializable{
+public class KhachHang extends ThanhVien implements Serializable {
     private String diachi;
     private String sdt;
     
     public KhachHang(){
-        super();
     }
 
-    public KhachHang(String diachi, String sdt, int id, String hoten, String email, String vaitro, boolean dakichhoat) {
-        super(id, hoten, email, vaitro, dakichhoat);
+    public KhachHang(String diachi, String sdt, int id, String vaitro, String hoten, String email, boolean dakichhoat) {
+        super(id, vaitro, hoten, email, dakichhoat);
         this.diachi = diachi;
         this.sdt = sdt;
+    }
+
+    public KhachHang(int id) {
+        super(id);
     }
 
     public String getDiachi() {
@@ -40,7 +43,7 @@ public class KhachHang extends ThanhVien implements Serializable{
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
-    
+
     
     
 }

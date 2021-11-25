@@ -9,30 +9,20 @@ import java.io.Serializable;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
 public class TKKhachHang extends KhachHang implements Serializable{
     private float doanhthutheongay;
     
     public TKKhachHang(){
         super();
-    }
+    }   
 
-    public TKKhachHang(float tongtien, String diachi, String sdt, int id, String hoten, String email, String vaitro, boolean dakichhoat) {
-        super(diachi, sdt, id, hoten, email, vaitro, dakichhoat);
-        this.doanhthutheongay = tongtien;
-    }
-
-    
-
-    public float getDoanhthutheongay() {
+    public float getDoanhthu() {
         return doanhthutheongay;
     }
 
-    public void setDoanhthutheongay(float doanhthutheongay) {
+    public void setDoanhthu(float doanhthutheongay) {
         this.doanhthutheongay = doanhthutheongay;
     }
-    
-    
-    
 }

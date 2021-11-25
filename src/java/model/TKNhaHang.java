@@ -6,35 +6,23 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
 public class TKNhaHang extends NhaHang implements Serializable{
-    
     private float doanhthutheongay;
-
-    public TKNhaHang() {
+    
+    public TKNhaHang(){
         super();
-    }
+    }  
 
-    public TKNhaHang(float doanhthutheongay, int id, String tennhahang, String diachinhahang, String giohoatdong, List<MonAn> menu, List<LoiNhanXet> review, ChuNhaHang chunhahang) {
-        super(id, tennhahang, diachinhahang, giohoatdong, menu, review, chunhahang);
-        this.doanhthutheongay = doanhthutheongay;
-    }
-
-    public float getDoanhthutheongay() {
+    public float getDoanhthu() {
         return doanhthutheongay;
     }
 
-    public void setDoanhthutheongay(float doanhthutheongay) {
+    public void setDoanhthu(float doanhthutheongay) {
         this.doanhthutheongay = doanhthutheongay;
     }
-
-    
-    
-    
-    
 }

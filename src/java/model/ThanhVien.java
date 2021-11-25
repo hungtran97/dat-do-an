@@ -9,26 +9,28 @@ import java.io.Serializable;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
 public class ThanhVien implements Serializable{
     private int id;
+    private String vaitro;
     private String hoten;
     private String email;
-    private String vaitro;
     private boolean dakichhoat;
     
     public ThanhVien(){
-        super();
     }
 
-    public ThanhVien(int id, String hoten, String email, String vaitro, boolean dakichhoat) {
-        super();
+    public ThanhVien(int id, String vaitro, String hoten, String email, boolean dakichhoat) {
         this.id = id;
+        this.vaitro = vaitro;
         this.hoten = hoten;
         this.email = email;
-        this.vaitro = vaitro;
         this.dakichhoat = dakichhoat;
+    }
+    
+    public ThanhVien(int id){
+        this.id = id;
     }
 
     public int getId() {
@@ -37,6 +39,14 @@ public class ThanhVien implements Serializable{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getVaitro() {
+        return vaitro;
+    }
+
+    public void setVaitro(String vaitro) {
+        this.vaitro = vaitro;
     }
 
     public String getHoten() {
@@ -55,14 +65,6 @@ public class ThanhVien implements Serializable{
         this.email = email;
     }
 
-    public String getVaitro() {
-        return vaitro;
-    }
-
-    public void setVaitro(String vaitro) {
-        this.vaitro = vaitro;
-    }
-
     public boolean isDakichhoat() {
         return dakichhoat;
     }
@@ -70,7 +72,4 @@ public class ThanhVien implements Serializable{
     public void setDakichhoat(boolean dakichhoat) {
         this.dakichhoat = dakichhoat;
     }
-    
-    
-    
 }

@@ -6,92 +6,39 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
-public class NhaHang implements Serializable{
-    private int id;
-    private String tennhahang;
-    private String diachinhahang;
-    private String giohoatdong;
-    private List<MonAn> menu;
-    private List<LoiNhanXet> review;
-    private ChuNhaHang chunhahang;
-    
-    public NhaHang(){
-        super();
+public class NhaHang extends ThanhVien implements Serializable{
+    private String diachi;
+    private String sdt;
+
+    public NhaHang() {
     }
 
-    public NhaHang(int id, String tennhahang, String diachinhahang, String giohoatdong, List<MonAn> menu, List<LoiNhanXet> review, ChuNhaHang chunhahang) {
-        super();
-        this.id = id;
-        this.tennhahang = tennhahang;
-        this.diachinhahang = diachinhahang;
-        this.giohoatdong = giohoatdong;
-        this.menu = menu;
-        this.review = review;
-        this.chunhahang = chunhahang;
+    public NhaHang(String diachi, String sdt, int id, String vaitro, String hoten, String email, boolean dakichhoat) {
+        super(id, vaitro, hoten, email, dakichhoat);
+        this.diachi = diachi;
+        this.sdt = sdt;
     }
 
-    public int getId() {
-        return id;
+    public String getDiachi() {
+        return diachi;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
     }
 
-    public String getTennhahang() {
-        return tennhahang;
+    public String getSdt() {
+        return sdt;
     }
 
-    public void setTennhahang(String tennhahang) {
-        this.tennhahang = tennhahang;
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
-
-    public String getDiachinhahang() {
-        return diachinhahang;
-    }
-
-    public void setDiachinhahang(String diachinhahang) {
-        this.diachinhahang = diachinhahang;
-    }
-
-    public String getGiohoatdong() {
-        return giohoatdong;
-    }
-
-    public void setGiohoatdong(String giohoatdong) {
-        this.giohoatdong = giohoatdong;
-    }
-
-    public List<MonAn> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(List<MonAn> menu) {
-        this.menu = menu;
-    }
-
-    public List<LoiNhanXet> getReview() {
-        return review;
-    }
-
-    public void setReview(List<LoiNhanXet> review) {
-        this.review = review;
-    }
-
-    public ChuNhaHang getChunhahang() {
-        return chunhahang;
-    }
-
-    public void setChunhahang(ChuNhaHang chunhahang) {
-        this.chunhahang = chunhahang;
-    }
-    
     
     
 }

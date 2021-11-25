@@ -6,29 +6,24 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
- * @author Hung
+ * @author Admin
  */
 public class HoaDon implements Serializable{
     private int id;
-    private DonHang donhang;
-    private Date thoigianxuat;
     private float tienthanhtoan;
-    
-    
-    public HoaDon(){
-        super();
+    private Date thoigianxuat;
+
+    public HoaDon() {
     }
 
-    public HoaDon(int id, DonHang donhang, Date thoigianxuat, float tienthanhtoan) {
-        super();
+    public HoaDon(int id, float tienthanhtoan, Date thoigianxuat) {
         this.id = id;
-        this.donhang = donhang;
-        this.thoigianxuat = thoigianxuat;
         this.tienthanhtoan = tienthanhtoan;
+        this.thoigianxuat = thoigianxuat;
     }
 
     public int getId() {
@@ -39,12 +34,12 @@ public class HoaDon implements Serializable{
         this.id = id;
     }
 
-    public DonHang getDonhang() {
-        return donhang;
+    public float getTienthanhtoan() {
+        return tienthanhtoan;
     }
 
-    public void setDonhang(DonHang donhang) {
-        this.donhang = donhang;
+    public void setTienthanhtoan(float tienthanhtoan) {
+        this.tienthanhtoan = tienthanhtoan;
     }
 
     public Date getThoigianxuat() {
@@ -54,15 +49,6 @@ public class HoaDon implements Serializable{
     public void setThoigianxuat(Date thoigianxuat) {
         this.thoigianxuat = thoigianxuat;
     }
-
-    public float getTienthanhtoan() {
-        return tienthanhtoan;
-    }
-
-    public void setTienthanhtoan(float tienthanhtoan) {
-        this.tienthanhtoan = tienthanhtoan;
-    }
-    
     
     
 }
