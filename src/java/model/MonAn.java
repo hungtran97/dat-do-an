@@ -5,55 +5,73 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author hungt
+ * @author Hung
  */
-public class MonAn {
-    private String tenMon;
-    private String giaMon;
-    private String soLuongTonKho;
-    private String tblNhaHangid;
-
-    public MonAn(String tenMon, String giaMon, String soLuongTonKho, String tblNhaHangid) {
-        this.tenMon = tenMon;
-        this.giaMon = giaMon;
-        this.soLuongTonKho = soLuongTonKho;
-        this.tblNhaHangid = tblNhaHangid;
+public class MonAn implements Serializable{
+    private int id;
+    private String tenmonan;
+    private NhaHang nhahang;
+    private float giaca;
+    private int soluongcothedat;
+    
+    public MonAn(){
+        super();
     }
 
-    public MonAn() {
+    public MonAn(int id, String tenmonan, NhaHang nhahang, float giaca, int soluongcothedat) {
+        super();
+        this.id = id;
+        this.tenmonan = tenmonan;
+        this.nhahang = nhahang;
+        this.giaca = giaca;
+        this.soluongcothedat = soluongcothedat;
     }
 
-    public String getTenMon() {
-        return tenMon;
+    public int getId() {
+        return id;
     }
 
-    public void setTenMon(String tenMon) {
-        this.tenMon = tenMon;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getGiaMon() {
-        return giaMon;
+    public String getTenmonan() {
+        return tenmonan;
     }
 
-    public void setGiaMon(String giaMon) {
-        this.giaMon = giaMon;
+    public void setTenmonan(String tenmonan) {
+        this.tenmonan = tenmonan;
     }
 
-    public String getSoLuongTonKho() {
-        return soLuongTonKho;
+    public NhaHang getNhahang() {
+        return nhahang;
     }
 
-    public void setSoLuongTonKho(String soLuongTonKho) {
-        this.soLuongTonKho = soLuongTonKho;
+    public void setNhahang(NhaHang nhahang) {
+        this.nhahang = nhahang;
     }
 
-    public String getTblNhaHangid() {
-        return tblNhaHangid;
+    public float getGiaca() {
+        return giaca;
     }
 
-    public void setTblNhaHangid(String tblNhaHangid) {
-        this.tblNhaHangid = tblNhaHangid;
+    public void setGiaca(float giaca) {
+        this.giaca = giaca;
     }
+
+    public int getSoluongcothedat() {
+        return soluongcothedat;
+    }
+
+    public void setSoluongcothedat(int soluongcothedat) {
+        this.soluongcothedat = soluongcothedat;
+    }
+    
+    
+    
+    
 }

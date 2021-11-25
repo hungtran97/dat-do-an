@@ -5,10 +5,33 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author hungt
+ * @author Hung
  */
-public class NhanVienGiaoHang {
+public class NhanVienGiaoHang extends ThanhVien  implements Serializable{
+    
+    private String sdt;
+
+    
+    public NhanVienGiaoHang(){
+        super();
+    }
+
+    public NhanVienGiaoHang(String sdt, int id, String hoten, String email, String vaitro, boolean dakichhoat) {
+        super(id, hoten, email, vaitro, dakichhoat);
+        this.sdt = sdt;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+    
     
 }

@@ -13,19 +13,18 @@
 <html>
     <head>
         <%
-            ThanhVien tv = (ThanhVien) session.getAttribute("chunhahang");
+            ThanhVien tv = (ThanhVien) session.getAttribute("nhanviengiaohang");
             if (tv == null) {
                 response.sendRedirect("dangnhap.jsp?err=timeout");
             }
             String nhahang = null;
-            List<DonHang> listDonHang = (new DonHangDAO()).getDanhSachDonHang(tv.getId());
+            List<DonHang> listDonHang = (new DonHangDAO()).getDanhSachDonHangChuaNhan();
             for (DonHang dh : listDonHang) {
-                if (nhahang == null) {
-                    nhahang = dh.getNhahang().getTennhahang();
-                }
+                
 
             }
-            session.setAttribute("tennhahang", nhahang);
+            String tennv  = tv.getHoten();
+            session.setAttribute("tennhanvien", tv.getHoten());
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -37,28 +36,33 @@
         <table border="0">             
 
             <tr> <td> 
-                    <p/>Tên nhà hàng: <%= nhahang%>
+                    <p/>Nhân viên giao hàng: <%= tennv%>
 
                 </td>
             </tr>
             <tr> <td> <table style="border: 1px solid black;border-collapse: collapse;" >
-                        <thead><td style="border: 1px solid black; padding:0 15px 0 15px;">STT</td>
-                        <td style="border: 1px solid black; padding:0 15px 0 15px;">Thời gian đặt </td>
+                        <thead>
+                        <td style="border: 1px solid black; padding:0 15px 0 15px;">Mã đơn hàng </td>
+                        <td style="border: 1px solid black; padding:0 15px 0 15px;">Tên nhà hàng</td>
+                        <td style="border: 1px solid black; padding:0 15px 0 15px;">Địa chỉ nhà hàng</td>
                         <td style="border: 1px solid black; padding:0 15px 0 15px;">Tổng tiền</td>
                         <td style="border: 1px solid black; padding:0 15px 0 15px;">Tên khách hàng</td>
                         <td style="border: 1px solid black; padding:0 15px 0 15px;">SDT</td>
+                        <td style="border: 1px solid black; padding:0 15px 0 15px;">Địa chỉ giao hàng</td>
                         </thead>
                         <%
                             if (listDonHang != null)
                                 for (int i = 0; i < listDonHang.size(); i++) {
                                     session.setAttribute("chitiet", listDonHang.get(i));
                         %>
-                        <tr class="clickable" onclick="openPage('gdChiTietDonHang.jsp')">  
-                            <td style="text-align:center; padding:0 15px 0 15px;"><%=(i + 1)%></td>
-                            <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getThoigiandat()%></td>
+                        <tr class="clickable" onclick="openPage('gdDonHangChiTiet.jsp')">  
+                            <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getId()%></td>
+                            <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getNhahang().getTennhahang()%></td>
+                            <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getNhahang().getDiachinhahang()%></td>
                             <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getTongtien()%></td>
                             <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getKhachhang().getHoten()%></td>
                             <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getKhachhang().getSdt()%></td>
+                            <td style="text-align:center; padding:0 15px 0 15px;"><%=listDonHang.get(i).getDiachigiaohang()%></td>
                         </tr>
                         <%}%>
                     </table>
