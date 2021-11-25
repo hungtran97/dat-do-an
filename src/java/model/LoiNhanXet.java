@@ -61,7 +61,5 @@ public class LoiNhanXet implements Serializable{
     public void setChitietloinhanxet(String chitietloinhanxet) {
         this.chitietloinhanxet = chitietloinhanxet;
     }
-    
-    
-    
+   
 }

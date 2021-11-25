@@ -5,34 +5,17 @@
  */
 package model;
 
-import java.io.Serializable;
-
 /**
  *
- * @author Hung
+ * @author duong
  */
-public class MonAnTrongDH implements Serializable{
-    private int id;
+public class MonAnTrongDH {
     private MonAn monan;
-    private int soluong;
-    
-    public MonAnTrongDH(){
-        super();
-    }
+    private int soluongdat;
 
-    public MonAnTrongDH(int id, MonAn monan, int soluong) {
-        super();
-        this.id = id;
+    public MonAnTrongDH(MonAn monan, int soluongdat) {
         this.monan = monan;
-        this.soluong = soluong;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.soluongdat = soluongdat;
     }
 
     public MonAn getMonan() {
@@ -43,16 +26,12 @@ public class MonAnTrongDH implements Serializable{
         this.monan = monan;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public int getSoluongdat() {
+        return soluongdat;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setSoluongdat(int soluongdat) {
+        this.soluongdat = soluongdat;
     }
-    
-    
-    
-    
     
 }

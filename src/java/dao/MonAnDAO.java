@@ -133,4 +133,24 @@ public class MonAnDAO {
         }
         return kq;
     }
+    public static ArrayList<MonAn> getMonAnCanTim(String tuKhoa) {
+        ArrayList<MonAn> listMonAn = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM tblMonAn WHERE tenmonan LIKE %" + tuKhoa + "%";
+            PreparedStatement st = con.prepareStatement(query);
+            System.out.println(st);
+            ResultSet rs = st.executeQuery(query);
+            System.out.println(rs);
+            while (rs.next()) {
+                MonAn monAn = new MonAn(rs.getInt(1), rs.getString(2), (NhaHang) rs.getObject(3), rs.getFloat(4), rs.getInt(5));
+                listMonAn.add(monAn);
+            }
+            // close connection
+            con.close();
+            return listMonAn;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -69,9 +69,5 @@ public class MonAn implements Serializable{
 
     public void setSoluongcothedat(int soluongcothedat) {
         this.soluongcothedat = soluongcothedat;
-    }
-    
-    
-    
-    
+    }  
 }
