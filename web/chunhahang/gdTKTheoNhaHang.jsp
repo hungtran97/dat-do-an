@@ -16,10 +16,61 @@
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <title>JSP Page</title>
+            <title>Thống kê theo nhà hàng</title>
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+            <script>
+            $( function() {
+                $( "#datepicker" ).datepicker();
+            } );
+            </script>
         </head>
+            <%
+                Thanhvien cnh = (Thanhvien)session.getAttribute("chunhahang");
+                    if(sv==null){
+                        response.sendRedirect("dangnhap.jsp?err=timeout");
+                    }
+                //Lay danh sach nha hang
+                ArrayList<NhaHang> listNH = (new TKNhaHangDAO()).getTKNhaHang(sd, ed);
+                session.setAttribute("listNH", listNH);
+            %>
         <body>
-            <h1><h:outputText value="Hello World!"/></h1>
+            <h2>Thống kê theo nhà hàng</h2>
+            <p>Chủ nhà hàng: <%=cnh.getChuNhaHang().getHoten()%></p>
+            <form name="chonngay" action="gdTKTheoKhachHang.jsp" method="post">
+                <p>Ngày bắt đầu thống kê: <input type="text" id="datepicker"></p>
+                <p>Ngày kế thúc thống kê: <input type="text" id="datepicker"></p>
+                <button type="submit">Xem thống kê</button>
+            </form>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Mã nhà hàng</th>
+                        <th>Tên nhà hàng</th>
+                        <th>Tổng doanh thu</th>
+                        <th>Chọn</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% 
+                        if(listNH != null)
+                        for(int i=0; i<listMHNH.size(); i++){
+                    %>
+                    <tr>
+                        <td><%=(i+1) %></td>
+                        <td><%=listNH.get(i).getTKNhaHang.getId()%></td>
+                        <td><%=listNH.get(i).getTKNhaHang.getTen()%></td>
+                        <td><%=listNH.get(i).getTKNhaHang.getDoanhthu()%></td>
+                        <td><a href="gdTKChiTietNhaHang.jsp?idnh=<%=listNH.get(i).getId()%>">Chọn</a></td>
+                    </tr>
+                    <%} %>
+                </tbody>
+            </table>
+            <br>
+            <button onclick="openPage('gdChonTK.jsp')">Quay lại</button>
         </body>
     </html>
 </f:view>

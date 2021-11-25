@@ -16,10 +16,52 @@
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <title>JSP Page</title>
+            <title>Thống kê chi tiết nhà hàng</title>
         </head>
+            <%
+                Thanhvien cnh = (Thanhvien)session.getAttribute("chunhahang");
+                    if(sv==null){
+                        response.sendRedirect("dangnhap.jsp?err=timeout");
+                    }
+                
+                //lay du lieu nha hang
+                int idkh = (int)session.getAttribute("idnh");
+                
+                //Lay danh sach hoa don nha hang
+                ArrayList<NhaHang> listHDNH = (new HoaDonDAO()).getHoaDonNH(idnh, sd, ed);
+                session.setAttribute("listHDNH", listHDNH);
+            %>
         <body>
-            <h1><h:outputText value="Hello World!"/></h1>
+            <h2>Thống kê chi tiết nhà hàng</h2>
+            <p>Chủ nhà hàng: <%=cnh.getChuNhaHang().getHoten()%></p>
+            <p>Nhà hàng: <%=NhaHang("idnh").getTen()%></p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>TT</th>
+                        <th>Mã hóa đơn</th>
+                        <th>Tiền thanh toán</th>
+                        <th>Thời gian xuất</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% 
+                        if(listHDKH != null)
+                        for(int i=0; i<listMHKH.size(); i++){
+                    %>
+                    <tr>
+                        <td><%=(i+1) %></td>
+                        <td><%=listHDNH.get(i).getHoaDonNH.getId()%></td>
+                        <td><%=listHDNH.get(i).getHoaDonNH.getTienthanhtoan()%></td>
+                        <td><%=listHDNH.get(i).getHoaDonNH.getThoigianxuat()%></td>
+                    </tr>
+                    <%} %>
+                </tbody>
+            </table>
+            <br>
+            <button onclick="openPage('gdTKTheoNhaHang.jsp')">Quay lại</button>
         </body>
     </html>
 </f:view>
