@@ -11,17 +11,36 @@ import java.io.Serializable;
  *
  * @author Admin
  */
-public class NhaHang extends ThanhVien implements Serializable{
+public class NhaHang implements Serializable{
+    private int id;
+    private String ten;
     private String diachi;
     private String sdt;
 
     public NhaHang() {
     }
 
-    public NhaHang(String diachi, String sdt, int id, String vaitro, String hoten, String email, boolean dakichhoat) {
-        super(id, vaitro, hoten, email, dakichhoat);
+    public NhaHang(int id, String ten, String diachi, String sdt) {
+        this.id = id;
+        this.ten = ten;
         this.diachi = diachi;
         this.sdt = sdt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getDiachi() {
@@ -39,6 +58,8 @@ public class NhaHang extends ThanhVien implements Serializable{
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
+    
+    
     
     
 }
