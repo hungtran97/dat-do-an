@@ -1,44 +1,35 @@
 <%-- 
     Document   : gdChinhChuNhaHang
-    Created on : Nov 11, 2021, 10:08:56 PM
-    Author     : hungt
+    Created on : Nov 17, 2021, 1:41:29 AM
+    Author     : Admin
 --%>
 
-<%@page import="model.ThanhVien"%>
-<%@ page contentType="text/html" pageEncoding="UTF-8"
-    import="java.util.*, dao.*, model.*"
-%>
-<%
-    // initialize the current year that's used in the 
-    // copyright notice
-    GregorianCalendar currentDate = new GregorianCalendar();
-    int currentYear = currentDate.get(Calendar.YEAR);
-    int currentMont = currentDate.get(Calendar.MONTH) + 1;
-%>
-<!DOCTYPE html>
-<jsp:include page="header.jsp"/>
-<div class="container p-4 my-2" style="height: 100%">
-    <div class="row row-cols-1 row-cols-md-2 gx-1">
-<!--        <div class="col">
-            <div class="card bg-success text-light">
-                <h5 class="card-header">Thành Viên</h5>
-                <div class="card-body">
-                    <h5 class="card-title">345k</h5>
-                    <p class="card-text"><%= currentYear%>/<%= currentMont%>, Viet Nam</p>
-                    <p class="card-text text-light">18.2% increase since last month</p>
-                </div>
-            </div>
-        </div>-->
-<%
-ThanhVien tv = (ThanhVien)session.getAttribute("chunhahang");
-      if(tv==null){
-          response.sendRedirect("dangnhap.jsp?err=timeout");
-      }
-      %>
-      <button onclick="openPage('gdQuanLyMonAn.jsp')">Xem đơn hàng</button>
-      <button onclick="openPage('gdDonHang.jsp')">Xem đơn hàng</button>
-      <button onclick="openPage('gdChonThongKe.jsp')">Xem thống kê</button>
-        
-    </div>
-</div>
-<jsp:include page="footer.jsp"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <title>Trang chủ Chủ nhà hang</title>
+        </head>
+        <body>
+            <%
+            Thanhvien cnh = (Thanhvien)session.getAttribute("chunhahang");
+                if(sv==null){
+                    response.sendRedirect("dangnhap.jsp?err=timeout");
+                }
+            %>
+            <h2>Trang chủ Chủ nhà hàng</h2>
+            <p>Chủ nhà hàng: <%=cnh.getChuNhaHang().getHoten()%></p>
+            <button onclick="openPage('gdDonHang.jsp')">Đơn hàng</button><br>
+            <button onclick="openPage('gdQuanLyMonAn.jsp')">Quản lý thực đơn</button><br>
+            <button onclick="openPage('gdChonTK.jsp')">Xem thống kê</button>
+        </body>
+    </html>
+</f:view>
