@@ -5,10 +5,42 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author hungt
+ * @author Hung
  */
-public class KhachHang {
+public class KhachHang extends ThanhVien implements Serializable{
+    private String diachi;
+    private String sdt;
+    
+    public KhachHang(){
+        super();
+    }
+
+    public KhachHang(String diachi, String sdt, int id, String hoten, String email, String vaitro, boolean dakichhoat) {
+        super(id, hoten, email, vaitro, dakichhoat);
+        this.diachi = diachi;
+        this.sdt = sdt;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+    
+    
     
 }
