@@ -18,8 +18,4 @@ public class ChuNhaHang extends ThanhVien implements Serializable{
         super(id, hoten, email, vaitro, dakichhoat);
     }
 
-    
-    
-    
-    
 }
